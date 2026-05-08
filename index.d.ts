@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2025 The Stdlib Authors.
@@ -16,17 +16,21 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@esm/index.d.ts"/>
+
+import { float64ndarray } from '@stdlib/types/ndarray';
 
 /**
-* Compute the arithmetic mean of a one-dimensional double-precision floating-point ndarray using a one-pass trial mean algorithm with pairwise summation.
+* Computes the arithmetic mean of a one-dimensional double-precision floating-point ndarray using a one-pass trial mean algorithm with pairwise summation.
 *
-* @module @stdlib/stats-base-ndarray-dmeanlipw
+* @param arrays - array-like object containing an input ndarray
+* @returns arithmetic mean
 *
 * @example
 * var Float64Array = require( '@stdlib/array-float64' );
 * var ndarray = require( '@stdlib/ndarray-base-ctor' );
-* var dmeanlipw = require( '@stdlib/stats-base-ndarray-dmeanlipw' );
 *
 * var xbuf = new Float64Array( [ 1.0, 3.0, 4.0, 2.0 ] );
 * var x = new ndarray( 'float64', xbuf, [ 4 ], [ 1 ], 0, 'row-major' );
@@ -34,26 +38,9 @@
 * var v = dmeanlipw( [ x ] );
 * // returns 2.5
 */
-
-// MODULES //
-
-var join = require( 'path' ).join;
-var tryRequire = require( '@stdlib/utils-try-require' );
-var isError = require( '@stdlib/assert-is-error' );
-var main = require( './main.js' );
-
-
-// MAIN //
-
-var dmeanlipw;
-var tmp = tryRequire( join( __dirname, './native.js' ) );
-if ( isError( tmp ) ) {
-	dmeanlipw = main;
-} else {
-	dmeanlipw = tmp;
-}
+declare function dmeanlipw( arrays: [ float64ndarray ] ): number;
 
 
 // EXPORTS //
 
-module.exports = dmeanlipw;
+export = dmeanlipw;
